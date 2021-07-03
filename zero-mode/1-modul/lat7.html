@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="pesan">Tmpil pesan</button>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      methods: {
+        pesan: function () {
+          alert("selamat belajar vue")
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
+
+<!-- v-on:click digunakan untuk menangani event pemanggilan 
+  fungsi melalui klik tombol.
+   Perhatikan bagaimana nilai dari v-on:click 
+   adalah nama dari fungsi yang hendak dipanggil 
+   ketika event klik tombol terjadi. -->
+
+<!-- Vue.js juga menyediakan shorthand untuk penggunaan v-on, sehingga ketika ditulis lengkap adalah
+v-on:click=”pesan”
+dan ketika dipersingkat menjadi
+@click=”pesan” -->

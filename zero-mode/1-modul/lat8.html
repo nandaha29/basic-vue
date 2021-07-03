@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>key modifiers</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <h3>Masukkan nama Guru</h3>
+    <form v-on:submit.prevent>
+      <input type="text" name="namaSiswa" id="namaSiswa" @keyup.enter='simpan' v-model='guru'>
+      <button type="button" @click="simpan">Simpan</button>
+      <br>
+
+      <table border="1" style="border-collapse: collapse;" v-if="dataGuru.length>0">
+        <tr>
+          <thead>
+            <th style="width: 30px">#</th>
+            <th style="width: 200px">Nama Guru</th>
+          </thead>
+        </tr>
+        <tr>
+          <tbody v-for="(guru,index) in dataGuru" :key="index">
+            <td>{{index+1}}</td>
+            <td>{{guru}}</td>
+          </tbody>
+        </tr>
+      </table>
+      <h4 v-else>Tidak Ada data</h4>
+    </form>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      methods: {
+        // untuk menyimpan data dari form
+        simpan: function () {
+          this.dataGuru.push(this.guru);
+          this.guru = '';
+        },
+        pesan: function () {
+          alert("selamat belajar vue")
+        }
+      },
+      data: {
+        dataGuru: ['Arya', 'Budi', 'Cici'],
+        guru: ''
+        // guru nantinya akan di-bind dengan kolom isian form menggunakan two-way data binding. Input user disimpan di dalam guru kemudian ditambahkan sebagai elemen dari array dataGuru.
+
+      }
+    })
+  </script>
+</body>
+
+</html>
+
+<!-- Vue.js menyediakan key modifiers untuk penanganan 
+  event keyboard menggunakan keyup. 
+  Contohnya penanganan event ketika menekan tombol Enter. 
+  Untuk contoh penggunaan key modifier, akan dibuat 
+  form dimana data disimpan dengan menekan tombol Enter 
+  atau menekan tombol. -->
+
+<!-- v-on:submit.prevent ditambahkan agar halaman tidak dimuat ulang ketika data disubmit.
+@keyup.enter (shorthand dari v-on:keyup.enter) ditambahkan untuk memanggil method simpan ketika tombol Enter ditekan setelah input data di kolom isian
+v-model ditambahkan untuk two-way data binding dengan property guru yang akan ditambahkan di object data nanti
+@click akan memanggil method simpan -->
+
+<!-- 
+  mengeluarkan isi array
+  <pre>{{dataGuru}}</pre> -->

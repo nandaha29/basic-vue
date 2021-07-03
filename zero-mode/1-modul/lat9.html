@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computed Properties</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>Output dengan Computed Property</h3>
+    <p>{{getRandom}}</p>
+    <p>{{getRandom}}</p>
+    <p>{{getRandom}}</p>
+
+    <h3>Output dengan Method</h3>
+    <p>{{getAcak()}}</p>
+    <p>{{getAcak()}}</p>
+    <p>{{getAcak()}}</p>
+
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      computed: {
+        getRandom: function () {
+          return Math.random();
+        }
+      },
+      methods: {
+        getAcak: function () {
+          return Math.random();
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
+
+<!-- diketahui bahwa jika getRandom dan getAcak dipanggil, 
+  maka keduanya akan menghasilkan nilai acak dari Math.random(), 
+  yaitu angka desimal 0-1. -->
+<!-- Pada getRandom, fungsi dijalankan untuk menghasilkan angka acak 0-1, dan keluarnya acak -->
+<!-- dengan computed property, getAcak() akan menampilkan hasil berbeda setiap kali dipanggil kembali -->
+
+<!-- Dengan demikian, dapat disimpulkan bahwa computed property adalah
+   property yang menyimpan nilai hasil komputasi.
+    Proses komputasi ini dideklarasi sebagai suatu fungsi
+     yang mengembalikan suatu nilai. -->
