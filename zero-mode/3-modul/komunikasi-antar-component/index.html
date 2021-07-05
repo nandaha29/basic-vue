@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Komunikasi antar Component</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div id="app" class="container" style="padding-top: 20px;">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <h3 class="card-header">Form Biodata error:')</h3>
+          <div class="card-body">
+            <!-- CHILD COMPONENT -->
+            <showform @send-data="getData"></showform>
+            <showdata :data="biodata"></showdata>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOWFORM  -->
+  <template id="show-form" script type="text/x-template">
+    <form>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" v-model="data.nama">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" v-model="data.email">
+      </div>
+      <button type="button" class="btn btn-primary" @click="simpan">Save</button>
+    </form>
+  </template>
+
+  <!-- SHOWDATA  -->
+  <template id="show-data" script type="text/x-template">
+    <table class="table table-bordered" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <td>Full Name</td>
+          <td v-if="data.nama == null">-</td>
+          <td v-else>{{data.nama}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td v-if="data.email == null">-</td>
+          <td v-else>{{data.email}}</td>
+        </tr>
+      </thead>
+    </table>
+  </template>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
+
+<!-- 
+bagaimana antar component dapat saling berkomunikasi atau berkirim data. 
+* Aplikasi yang akan dibuat memiliki satu component parent, yaitu app, 
+  dimana component tersebut akan diisi oleh dua component child, yaitu showform dan showdata.
+
+* @send-data adalah custom event.
+  event ini di-trigger, dalam hal ini oleh method simpan(), maka akan dipanggil method lainnya, yaitu getData()
+* getData adalah method dari parent yang berfungsi menampung data dari showform
+
+ -->
