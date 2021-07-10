@@ -1,0 +1,51 @@
+-> penjelasan utk modeAxios
+
+### The Vue Installer
+- $ npm i -g @vue/cli aja sekali doang.
+- $ vue create <project-name>
+- $ npm run serve
+- $ npm install vue-router -> utk routing
+- $ npm install vue-axios -> utk axios
+
+### The Laravel Installer
+- $ composer global require laravel/installer
+- $ laravel new <example-app>
+- $ cd <example-app>
+- $ php artisan serve -> jalankan server
+
+-> https://laravel.com/docs/8.x#installation-via-composer
+
+### Step
+- $ laravel new <example-app>
+- buka phpmyadmin buat db
+- setting DB di file .env
+- php artisan make:model <nama-tabel> -m 
+(-m = migration)
+- betulkan dataType tabel pada (database/migration/nama-tabel)
+- $ php artisan migrate
+- betulkan dataType tabel pada (app/Models/nama-tabel.php)
+- $ php artisan make:controller <nama-file>
+- betulkan dataType tabel pada (app/Http/Controllers/nama-file)
+- susun method buat CRUD
+- buat route API dengan memodifikasi file api.php
+- Route resource secara otomatis mendeklarasi beberapa route yang dibutuhkan khususnya untuk operasi CRUD, yaitu:
+
+### Buat FE Vue.js
+- $ composer require laravel/ui
+- $ php artisan ui vue
+- $ npm install vue-router vue-axios -> install package
+- $ npm install -D vue-loader vue-template-compiler -> Webpack loader for vue.js
+- $ npm install
+- $ npm run watch -> jalankan laravel
+(kl error run -> npm i @vue/compiler-sfc)
+- Buat file baru dengan nama app.blade.php di folder views (resources/views). File ini berfungsi sebagai entry point ketika aplikasi diakses pada browser
+- edit code
+- Buka file web.php(routes/web.php),modifikasi route
+- buat App.vue(resources/js) -> vue app nya disiniii ==========
+- buat componentnya (resources/js)
+- $ php artisan serve -> jalankan vue
+
+- hidupkan Xampp nya
+
+
+

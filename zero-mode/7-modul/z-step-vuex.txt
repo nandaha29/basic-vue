@@ -1,0 +1,60 @@
+STEP VUEX
+
+=>  Package ini berfungsi untuk mengelola state dari suatu aplikasi, khususnya yang menggunakan Vue sebagai frontend.
+
+### STARTER BE
+- $ laravel new lara-vue-auth
+- $ cd lara-vue-auth
+
+### BE STEP
+- $ composer require tymon/jwt-auth -> Install via composer
+(jika error -> composer require tymon/jwt-auth --ignore-platform-reqs)
+- $ php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider" -> Publish the config
+- $ php artisan jwt:secret -> Generate secret key
+- buat db baru di phpmyadmin
+- edit db , username
+- $ php artisan migrate
+- edit User.php (app\Models\User.php), 
+ tambahkan 2 method
+- edit auth.php (config\auth.php), utk dapat menerapkan JWT
+- $ php artisan make:controller AuthController
+- edit file AuthController, tambahkan construktor, dll
+- buat file api.php (routes/api.php) untuk membuat routes
+- $ php artisan serve
+- Pastikan juga service MySQL masih berstatus running
+
+- testing dengan postman -> localhost:8000/api/{route nya}
+
+- $ php artisan make:migration create_table_namaTabel
+- $  php artisan make:model RakBuku -mcr -> (migration, controller, resource) -> bisa bikin model controller migrations sekaligus
+
+- folder yg sering diutak atik =>
+API -> Controller, Models, Migrations, Routes(api.php), 
+	Request -> validasi 
+WEB - > sama tapi nambah Routes(web.php)
+
+
+### FE STEP
+- $ composer require laravel/ui -> 
+- $ php artisan ui vue
+- $ npm install vue-router vue-axios vuex
+- $ npm install -D vue-loader vue-template-compiler -> Webpack loader for vue.js
+(kl error run -> npm i @vue/compiler-sfc)
+- $ npm install
+- $ npm run watch -> run FE
+- edit web.php
+- edit welcome.blade.php -> yg menjadi rooe component vue
+- buat file App.vue (resources/js)
+- buat 3 file baru di dalam component
+- edit file Login.vue
+- edit register.vue
+- edit dashboard.vue
+- buat file routes.js dan store.js Di dalam folder js (resources/js/),
+- atur pengelolaan state aplikasi menggunakan package Vuex. di file store.js
+- modifikasi  file app.js (resources/js/app.js),
+- atur alur kerja form login di Login.vue
+- modifikasi file Register.vue,
+- jalankan laravel server -> $ php artisan serve
+- jalankan vue tuk proses compile -> $ npm run watch
+
+
